@@ -5,6 +5,15 @@ navy + biru), dengan aksen warna yang diadaptasi dari logo perusahaan (hijau, or
 Logo asli klien tersedia dalam tiga varian: `logo-transparent.png` (header), `logo-white.png` (footer),
 dan `favicon-logo.png`.
 
+## URL publik (GitHub Pages)
+
+**https://antonad-gh.github.io/rangvolar-website/**
+
+Repository: https://github.com/antonad-gh/rangvolar-website
+
+Situs di-deploy dari branch `gh-pages` yang berisi hasil build `dist/`.
+Branch `main` berisi source code Astro.
+
 ## Menjalankan proyek
 
 ```bash
@@ -36,7 +45,7 @@ docs/
 
 Foto dokumentasi di `public/images/` berasal dari [Unsplash](https://unsplash.com/license)
 (lisensi gratis untuk penggunaan komersial, tanpa atribusi wajib).
-Ilustrasi jaringan pada halaman Home serta ikon dibuat sebagai SVG — bebas lisensi.
+Ikon-ikon antarmuka dibuat sebagai SVG — bebas lisensi.
 
 ## Yang masih perlu dilengkapi sebelum publikasi
 
@@ -54,6 +63,25 @@ Formulir saat ini memvalidasi input di sisi klien dan menampilkan pesan sukses.
 Sebelum dipublikasikan, hubungkan ke backend atau layanan seperti Formspree / Web3Forms /
 Netlify Forms. Titik integrasi ditandai dengan komentar `TODO` di `src/pages/contact.astro`.
 
-## Domain
+## Update situs di GitHub Pages
 
-`astro.config.mjs` sudah disetel ke `https://www.rangvolar.com` untuk canonical URL dan metadata Open Graph.
+Setiap kali ada perubahan source:
+
+```bash
+npm run build
+# lalu salin isi folder dist/ ke branch gh-pages dan push
+```
+
+Ringkasnya: build → copy `dist/*` ke working directory branch `gh-pages` → commit → push.
+GitHub Pages akan otomatis memperbarui situs dalam beberapa menit.
+
+## Domain sendiri
+
+Jika sudah ingin memakai `www.rangvolar.com`:
+
+1. Tambahkan file `public/CNAME` berisi `www.rangvolar.com`.
+2. Ubah `site` di `astro.config.mjs` menjadi `https://www.rangvolar.com` dan `base: '/'`.
+3. Buat record DNS CNAME di pengaturan domain pointing ke `antonad-gh.github.io`.
+4. Build ulang dan push ke `gh-pages`.
+
+Sebelum itu, canonical URL dan Open Graph mengarah ke URL GitHub Pages.
