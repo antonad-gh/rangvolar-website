@@ -14,6 +14,16 @@ Repository: https://github.com/antonad-gh/rangvolar-website
 Situs di-deploy dari branch `gh-pages` yang berisi hasil build `dist/`.
 Branch `main` berisi source code Astro.
 
+### Menu temporer "Opsi Desain"
+
+Menu after-Contact di header/footer membuka `/mockups/index.html` di tab baru (`target="_blank"`)
+untuk melihat mockup Opsi A dan B. File mockup disalin dari `docs/mockups/` ke `public/mockups/`
+supaya ikut ter-deploy.
+
+**Cara menghapus:** hapus baris berlabel `'Opsi Desain'` dari array `nav` di `src/data/content.ts`
+(sudah ditandai komentar `MENU TEMPORER`), lalu build dan deploy ulang.
+File di `public/mockups/` boleh ikut dihapus jika tidak diperlukan.
+
 ## Menjalankan proyek
 
 ```bash
