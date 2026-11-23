@@ -1,3 +1,6 @@
+> **CATATAN:** File ini adalah draf/arsip dari tahap perencanaan dan **bukan sumber teks situs**.
+> Untuk mengubah tulisan yang tampil di website, edit **`src/data/content.ts`**.
+
 # Draf Narasi & Konten Website — PT. Rangrang Volar Sinergi
 
 > Catatan: Data spesifik perusahaan (alamat, telepon, email, nama tim, daftar proyek) **belum tersedia**.
