@@ -856,7 +856,25 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .footer-links a:hover { color: #fff; }
 
-.footer-contact { font-size: 13px; color: #9fb3d1; line-height: 2; }
+.footer-contact {
+  font-size: 13px;
+  color: #9fb3d1;
+}
+
+/* Ikon diletakkan di kolom tersendiri agar baris berikutnya rata dengan teks. */
+.footer-contact .frow {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.footer-contact .fico,
+.footer-contact .ftxt {
+  line-height: 1.7;
+  white-space: pre-line;
+}
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -893,7 +911,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .form-note,
 .form-success,
 .footer-about,
-.footer-contact {
+.footer-contact .ftxt {
   white-space: pre-line;
 }
 

@@ -20,8 +20,7 @@ export const company = {
   tagline: 'INFRASTRUCTURE · SECURITY · DATACENTER',
   contact: {
     // Boleh pakai tanda backtick (`) lalu tekan Enter untuk memotong baris.
-    address: `Jl. Puri Kartika Baru No.18
-Sudimara Selatan`,
+    address: 'Jl. Puri Kartika Baru No.18\nSudimara Selatan, Ciledug\nKota Tangerang, Banten 15151',
     phone: '021-7329074',
     fax: '021-7329074',
     email: 'info@rangvolar.com',

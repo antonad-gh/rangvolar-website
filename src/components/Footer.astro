@@ -36,10 +36,22 @@ const { contact } = company;
       <div>
         <h5>{footerContent.contactHeading}</h5>
         <div class="footer-contact">
-          📍 {contact.address}<br />
-          📞 {contact.phone}<br />
-          ✉️ {contact.email}<br />
-          🕐 {contact.hours}
+          <div class="frow">
+            <span class="fico">📍</span>
+            <span class="ftxt">{contact.address}</span>
+          </div>
+          <div class="frow">
+            <span class="fico">📞</span>
+            <span class="ftxt">{contact.phone}</span>
+          </div>
+          <div class="frow">
+            <span class="fico">✉️</span>
+            <span class="ftxt">{contact.email}</span>
+          </div>
+          <div class="frow">
+            <span class="fico">🕐</span>
+            <span class="ftxt">{contact.hours}</span>
+          </div>
         </div>
       </div>
     </div>
