@@ -44,7 +44,9 @@ docs/
 ## Kontribusi foto
 
 Foto dokumentasi di `public/images/` berasal dari [Unsplash](https://unsplash.com/license)
-(lisensi gratis untuk penggunaan komersial, tanpa atribusi wajib).
+(lisensi gratis untuk penggunaan komersial, tanpa atribusi wajib). Foto hero kabel
+(`pexels-cookiecutter-19166565.jpg`) berasal dari [Pexels](https://www.pexels.com/license/)
+(juga bebas lisensi); versi web yang sudah dikompres ada di `hero-cabling.jpg` (279 KB).
 Ikon-ikon antarmuka dibuat sebagai SVG — bebas lisensi.
 
 ## Mengubah teks situs (PENTING)
