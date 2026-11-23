@@ -39,6 +39,8 @@ export const nav = [
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/contact', label: 'Contact' },
+  // MENU TEMPORER: hapus baris ini setelah tidak diperlukan.
+  { href: '/mockups/index.html', label: 'Opsi Desain', newTab: true },
 ];
 
 export const header = {

@@ -235,6 +235,17 @@ ul { list-style: none; margin: 0; padding: 0; }
   border-radius: 2px;
 }
 
+/* Penanda menu temporer yang membuka tab baru */
+.site-nav a.nav-temp::after {
+  content: '↗';
+  position: static;
+  height: auto;
+  background: none;
+  margin-left: 4px;
+  font-size: 10px;
+  opacity: .75;
+}
+
 .menu-toggle {
   display: none;
   background: transparent;

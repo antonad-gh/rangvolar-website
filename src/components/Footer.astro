@@ -20,7 +20,17 @@ const { contact } = company;
       <div>
         <h5>{footerContent.navHeading}</h5>
         <ul class="footer-links">
-          {nav.map((item) => <li><a href={href(item.href)}>{item.label}</a></li>)}
+          {nav.map((item) => (
+            <li>
+              <a
+                href={href(item.href)}
+                target={'newTab' in item && item.newTab ? '_blank' : undefined}
+                rel={'newTab' in item && item.newTab ? 'noopener noreferrer' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 

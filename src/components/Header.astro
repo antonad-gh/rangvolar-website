@@ -21,7 +21,13 @@ function isActive(href: string) {
 
     <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
       {nav.map((link) => (
-        <a href={href(link.href)} class={isActive(link.href) ? 'active' : ''} aria-current={isActive(link.href) ? 'page' : undefined}>
+        <a
+          href={href(link.href)}
+          class:list={[{ active: isActive(link.href) }, { 'nav-temp': 'newTab' in link && link.newTab }]}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+          target={'newTab' in link && link.newTab ? '_blank' : undefined}
+          rel={'newTab' in link && link.newTab ? 'noopener noreferrer' : undefined}
+        >
           {link.label}
         </a>
       ))}
