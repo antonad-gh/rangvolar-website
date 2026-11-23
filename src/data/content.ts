@@ -19,8 +19,9 @@ export const company = {
     'PT. Rangrang Volar Sinergi menyediakan jasa pemasangan kabel jaringan komputer, fiber optic, CCTV, access control, instalasi listrik, dan pembangunan data center.',
   tagline: 'INFRASTRUCTURE · SECURITY · DATACENTER',
   contact: {
-    address: 'Jl. Puri Kartika Baru No.18
-      Sudimara Selatan',
+    // Boleh pakai tanda backtick (`) lalu tekan Enter untuk memotong baris.
+    address: `Jl. Puri Kartika Baru No.18
+Sudimara Selatan`,
     phone: '021-7329074',
     fax: '021-7329074',
     email: 'info@rangvolar.com',

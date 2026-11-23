@@ -871,6 +871,32 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: 0.02em;
 }
 
+/* ---------- Teks lebih dari satu baris ----------
+   Baris baru (Enter / \n) pada nilai teks di content.ts akan tampil sebagai baris baru. */
+.hero-lead,
+.hero h1,
+.section-heading h2,
+.section-heading p,
+.card h3,
+.card p,
+.stat span,
+.prose p,
+.check-list li span,
+.work-meta h3,
+.work-meta p,
+.team-card p,
+.step h3,
+.step p,
+.cta-panel h2,
+.cta-panel p,
+.info-item p,
+.form-note,
+.form-success,
+.footer-about,
+.footer-contact {
+  white-space: pre-line;
+}
+
 /* ---------- Utilities ---------- */
 .mt-0 { margin-top: 0; }
 .text-accent { color: var(--blue); }

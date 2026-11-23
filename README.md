@@ -69,6 +69,36 @@ Bagian-bagian di dalam `content.ts`:
 
 Data kontak sudah diisi: Jl. Puri Kartika Baru No.18 Sudimara Selatan · 021-7329074 · info@rangvolar.com.
 
+### Membuat teks menjadi dua baris (enter / CR)
+
+Ada **dua cara**, tergantung jenis field-nya:
+
+**1. Field teks biasa** (contoh: `company.contact.address`, deskripsi, judul tanpa akhiran `Html`):
+Ganti tanda kutip satu `'` dengan **backtick** `` ` ``, lalu tekan **Enter** di tempat yang ingin dipotong:
+
+```ts
+address: `Jl. Puri Kartika Baru No.18
+Sudimara Selatan`,
+```
+
+Alternatifnya, tetap pakai tanda kutip satu dan tulis `\n`:
+
+```ts
+address: 'Jl. Puri Kartika Baru No.18\nSudimara Selatan',
+```
+
+Baris baru sudah didukung oleh CSS (`white-space: pre-line`), jadi langsung tampil di bawahnya.
+
+**2. Field berakhiran `Html`** (contoh: `titleHtml`, `descriptionHtml`, `paragraphsHtml`):
+Pakai tag HTML `<br />` di dalam teks:
+
+```ts
+titleHtml: 'Satu Mitra untuk Semua<br />Kebutuhan Infrastruktur',
+```
+
+> Catatan: mengetik `<br />` pada field teks **biasa** akan tampil sebagai tulisan `<br />`, bukan baris baru.
+> Sebalumnya, menekan Enter pada field `...Html` juga tetap berfungsi, tetapi `<br />` lebih aman.
+
 ### Masih berupa placeholder
 
 Cari `[ISI: ...]` di `src/data/content.ts` untuk mengganti:
