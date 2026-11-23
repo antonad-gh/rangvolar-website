@@ -5,16 +5,8 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import StatBand from '../components/StatBand.astro';
 import CTASection from '../components/CTASection.astro';
-import { services, projects } from '../data/site';
+import { home, services, projects } from '../data/content';
 import { href } from '../utils/path';
-
-const ticker = [
-  'STRUCTURED CABLING',
-  'FIBER OPTIC',
-  'CCTV & ACCESS CONTROL',
-  'INSTALASI LISTRIK & UPS',
-  'DATA CENTER',
-];
 
 const imageAbout = href('/images/network-cables.jpg');
 const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
@@ -25,15 +17,12 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
   <section class="hero" style={heroStyle}>
     <div class="container">
       <div class="hero-copy">
-        <span class="eyebrow">&gt; INFRASTRUCTURE.SECURITY.DATACENTER</span>
-        <h1>Membangun <span class="accent">Infrastruktur Digital</span> Anda</h1>
-        <p class="hero-lead">
-          PT. Rangrang Volar Sinergi menghadirkan solusi pembangunan dan pemasangan infrastruktur jaringan komputer,
-          fiber optic, sistem keamanan, hingga data center yang kokoh, aman, dan siap mendukung operasional bisnis Anda.
-        </p>
+        <span class="eyebrow">&gt; {home.hero.eyebrow}</span>
+        <h1 set:html={home.hero.titleHtml} />
+        <p class="hero-lead">{home.hero.description}</p>
         <div class="hero-actions">
-          <a href={href('/services')} class="btn btn-primary">Lihat Layanan Kami <Icon name="arrow" /></a>
-          <a href={href('/contact')} class="btn btn-ghost">Konsultasi Gratis</a>
+          <a href={href('/services')} class="btn btn-primary">{home.hero.ctaPrimary} <Icon name="arrow" /></a>
+          <a href={href('/contact')} class="btn btn-ghost">{home.hero.ctaSecondary}</a>
         </div>
       </div>
     </div>
@@ -42,7 +31,7 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
   <!-- TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="container ticker-inner">
-      {ticker.map((item) => <span>{item}</span>)}
+      {home.ticker.map((item) => <span>{item}</span>)}
     </div>
   </div>
 
@@ -50,9 +39,9 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
   <section class="section" id="layanan">
     <div class="container">
       <SectionHeading
-        eyebrow="// LAYANAN KAMI"
-        title="Satu Mitra untuk Semua<br />Kebutuhan Infrastruktur"
-        description="Kami menangani setiap tahap pengerjaan — dari perencanaan, instalasi, integrasi, hingga dokumentasi akhir."
+        eyebrow={home.services.eyebrow}
+        title={home.services.titleHtml}
+        description={home.services.description}
       />
       <div class="grid-3">
         {services.map((service) => (
@@ -76,28 +65,26 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
     <div class="container split">
       <div class="split-visual" style={`background-image: url('${imageAbout}')`}>
         <div class="float-chip">
-          <b>100%</b>
-          <span>Komitmen pada kualitas<br />setiap pengerjaan</span>
+          <b>{home.why.chipValue}</b>
+          <span set:html={home.why.chipTextHtml} />
         </div>
       </div>
       <div>
-        <span class="eyebrow">// MENGAPA MEMILIH KAMI</span>
+        <span class="eyebrow">{home.why.eyebrow}</span>
         <h2 style="font-size: clamp(28px, 4vw, 38px); line-height: 1.2;">
-          Partner yang Andal untuk Setiap Proyek
+          {home.why.title}
         </h2>
         <div class="prose" style="margin-top: 18px;">
-          <p>
-            Didukung oleh <strong>sumber daya manusia yang memadai</strong> dan pengalaman kerja yang luas di lapangan,
-            kami memastikan setiap instalasi dikerjakan dengan rapi, aman, dan siap digunakan untuk jangka panjang.
-          </p>
+          <p set:html={home.why.descriptionHtml} />
         </div>
         <ul class="check-list">
-          <li><Icon name="check" /> <span>Tim teknisi berpengalaman di bidang cabling, fiber optic, dan data center</span></li>
-          <li><Icon name="check" /> <span>Pengerjaan sesuai standar dan ketepatan waktu yang disepakati</span></li>
-          <li><Icon name="check" /> <span>Dokumentasi dan labeling yang rapi untuk kemudahan perawatan</span></li>
-          <li><Icon name="check" /> <span>Pendampingan dari perencanaan hingga serah terima proyek</span></li>
+          {home.why.points.map((point) => (
+            <li><Icon name="check" /> <span>{point}</span></li>
+          ))}
         </ul>
-        <a href={href('/about')} class="btn btn-outline btn-sm" style="margin-top: 30px;">Kenali Kami Lebih Lanjut <Icon name="arrow" /></a>
+        <a href={href('/about')} class="btn btn-outline btn-sm" style="margin-top: 30px;">
+          {home.why.cta} <Icon name="arrow" />
+        </a>
       </div>
     </div>
   </section>
@@ -106,9 +93,9 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="// PORTOFOLIO"
-        title="Hasil Karya di Lapangan"
-        description="Dokumentasi sebagian proyek yang telah kami selesaikan untuk berbagai sektor industri."
+        eyebrow={home.portfolio.eyebrow}
+        title={home.portfolio.title}
+        description={home.portfolio.description}
         center
       />
       <div class="work-grid">
@@ -126,7 +113,7 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
         ))}
       </div>
       <div style="text-align: center; margin-top: 34px;">
-        <a href={href('/portfolio')} class="btn btn-outline">Lihat Semua Proyek <Icon name="arrow" /></a>
+        <a href={href('/portfolio')} class="btn btn-outline">{home.portfolio.cta} <Icon name="arrow" /></a>
       </div>
     </div>
   </section>

@@ -4,26 +4,11 @@ import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CTASection from '../components/CTASection.astro';
-import { services } from '../data/site';
-
-const steps = [
-  { title: 'Konsultasi', description: 'Mendiskusikan kebutuhan, kondisi lokasi, dan lingkup pekerjaan yang diinginkan.' },
-  { title: 'Perencanaan', description: 'Menyiapkan desain, material, jadwal, dan estimasi biaya sesuai kebutuhan.' },
-  { title: 'Pemasangan', description: 'Melaksanakan instalasi lapangan dengan mengutamakan kerapian dan keselamatan.' },
-  { title: 'Serah Terima', description: 'Pengujian, dokumentasi as-built, dan pendampingan hingga sistem siap digunakan.' },
-];
+import { servicesPage, services } from '../data/content';
 ---
 
-<BaseLayout
-  title="Layanan — PT. Rangrang Volar Sinergi"
-  description="Layanan pemasangan kabel jaringan, fiber optic, CCTV dan access control, instalasi listrik serta UPS, dan pembangunan data center."
->
-  <PageHero
-    eyebrow="// LAYANAN KAMI"
-    title="Solusi Lengkap untuk Infrastruktur Anda"
-    description="Dari sistem kabel terstruktur hingga integrasi data center, kami menangani setiap tahap pengerjaan dengan standar kualitas dan ketepatan waktu."
-    current="Services"
-  />
+<BaseLayout title={servicesPage.seoTitle} description={servicesPage.seoDescription}>
+  <PageHero {...servicesPage.hero} />
 
   <section class="section">
     <div class="container">
@@ -49,14 +34,9 @@ const steps = [
 
   <section class="section section-deep section-grid">
     <div class="container">
-      <SectionHeading
-        eyebrow="// ALUR KERJA"
-        title="Proses Pengerjaan yang Terarah"
-        description="Setiap proyek kami jalani melalui tahapan yang jelas agar hasil sesuai dengan harapan."
-        center
-      />
+      <SectionHeading {...servicesPage.process} center />
       <div class="steps">
-        {steps.map((step) => (
+        {servicesPage.steps.map((step) => (
           <div class="step">
             <h3>{step.title}</h3>
             <p>{step.description}</p>
@@ -67,9 +47,9 @@ const steps = [
   </section>
 
   <CTASection
-    title='Diskusikan Kebutuhan <span class="accent">Layanan Anda</span>'
-    description="Kami siap membantu menentukan solusi yang paling sesuai dengan kebutuhan dan kondisi lapangan Anda."
-    buttonLabel="Minta Penawaran"
+    title={servicesPage.cta.titleHtml}
+    description={servicesPage.cta.description}
+    buttonLabel={servicesPage.cta.button}
   />
 </BaseLayout>
 

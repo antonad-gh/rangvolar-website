@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { href } from '../utils/path';
+import { company } from '../data/content';
 
 interface Props {
   title?: string;
@@ -10,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = 'PT. Rangrang Volar Sinergi — Solusi Infrastruktur Jaringan & Data Center',
-  description = 'PT. Rangrang Volar Sinergi menyediakan jasa pemasangan kabel jaringan komputer, fiber optic, CCTV, access control, instalasi listrik, dan pembangunan data center.',
+  title = `${company.name} — Solusi Infrastruktur Jaringan & Data Center`,
+  description = company.description,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
@@ -29,7 +30,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString(
     <link rel="icon" type="image/png" href={href('/favicon-logo.png')} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Rangvolar — PT. Rangrang Volar Sinergi" />
+    <meta property="og:site_name" content={`Rangvolar — ${company.name}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

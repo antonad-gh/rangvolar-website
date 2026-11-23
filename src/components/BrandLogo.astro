@@ -1,5 +1,6 @@
 ---
 import { href } from '../utils/path';
+import { company } from '../data/content';
 
 interface Props {
   compact?: boolean;
@@ -11,7 +12,7 @@ const src = variant === 'white' ? '/images/logo-white.png' : '/images/logo-trans
 ---
 
 <span class:list={['brand', { 'brand-compact': compact }]}>
-  <img src={href(src)} alt="Rangrang Volar Sinergi" width="464" height="82" />
+  <img src={href(src)} alt={company.name} width="464" height="82" />
 </span>
 
 <style>

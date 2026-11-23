@@ -4,41 +4,25 @@ import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CTASection from '../components/CTASection.astro';
-import { values } from '../data/site';
+import { about, values } from '../data/content';
 import { href } from '../utils/path';
 
 const imageProfile = href('/images/architecture.jpg');
 ---
 
-<BaseLayout
-  title="Tentang Kami — PT. Rangrang Volar Sinergi"
-  description="Profil PT. Rangrang Volar Sinergi, mitra pembangunan dan pemasangan infrastruktur jaringan komputer, fiber optic, dan data center."
->
-  <PageHero
-    eyebrow="// TENTANG KAMI"
-    title="Tentang PT. Rangrang Volar Sinergi"
-    description="Kami adalah mitra terpercaya dalam pembangunan dan pemasangan infrastruktur jaringan komputer, sistem keamanan, serta integrasi ruang data center."
-    current="About"
-  />
+<BaseLayout title={about.seoTitle} description={about.seoDescription}>
+  <PageHero {...about.hero} />
 
   <section class="section">
     <div class="container split">
       <div class="split-visual" style={`background-image: url('${imageProfile}')`}></div>
       <div>
-        <span class="eyebrow">// PROFIL PERUSAHAAN</span>
-        <h2 style="font-size: clamp(28px, 4vw, 38px);">Membangun Fondasi Digital yang Andal</h2>
+        <span class="eyebrow">{about.profile.eyebrow}</span>
+        <h2 style="font-size: clamp(28px, 4vw, 38px);">{about.profile.title}</h2>
         <div class="prose" style="margin-top: 20px;">
-          <p>
-            PT. Rangrang Volar Sinergi bergerak di bidang pekerjaan pembangunan dan pemasangan infrastruktur jaringan
-            komputer. Kami menangani kebutuhan konektivitas dan keamanan fisik mulai dari <strong>Structured Cabling System</strong>,
-            jaringan fiber optic di dalam maupun di luar ruangan, pemasangan CCTV dan access control, instalasi listrik
-            serta panel dan UPS, hingga manajemen dan integrasi pembangunan ruang data center.
-          </p>
-          <p>
-            Didukung oleh sumber daya manusia yang memadai dan pengalaman kerja yang luas di lapangan, kami berkomitmen
-            mengerjakan setiap proyek dengan standar kualitas, ketepatan waktu, dan keselamatan kerja yang tinggi.
-            Setiap instalasi dirancang agar mudah dipelihara, scalable, dan siap mengikuti perkembangan teknologi.
-          </p>
+          {about.profile.paragraphsHtml.map((paragraph) => (
+            <p set:html={paragraph} />
+          ))}
         </div>
       </div>
     </div>
@@ -47,25 +31,21 @@ const imageProfile = href('/images/architecture.jpg');
   <section class="section section-deep section-grid">
     <div class="container">
       <SectionHeading
-        eyebrow="// VISI & MISI"
-        title="Arah dan Komitmen Kami"
-        description="Landasan yang memandu setiap pekerjaan yang kami lakukan."
+        eyebrow={about.visionMission.eyebrow}
+        title={about.visionMission.title}
+        description={about.visionMission.description}
         center
       />
       <div class="grid-2">
         <article class="card">
           <div class="icon-box"><Icon name="target" /></div>
-          <h3>Visi</h3>
-          <p>
-            [ISI: Visi resmi perusahaan —placeholder. Silakan ganti dengan pernyataan visi yang telah disetujui.]
-          </p>
+          <h3>{about.visionMission.visionLabel}</h3>
+          <p>{about.visionMission.vision}</p>
         </article>
         <article class="card">
           <div class="icon-box"><Icon name="zap" /></div>
-          <h3>Misi</h3>
-          <p>
-            [ISI: Misi resmi perusahaan —placeholder. Silakan ganti dengan pernyataan misi yang telah disetujui.]
-          </p>
+          <h3>{about.visionMission.missionLabel}</h3>
+          <p>{about.visionMission.mission}</p>
         </article>
       </div>
     </div>
@@ -74,9 +54,9 @@ const imageProfile = href('/images/architecture.jpg');
   <section class="section">
     <div class="container">
       <SectionHeading
-        eyebrow="// NILAI PERUSAHAAN"
-        title="Nilai yang Kami Junjung Tinggi"
-        description="Prinsip yang menjadi pedoman dalam setiap proses pengerjaan dan pelayanan kami."
+        eyebrow={about.values.eyebrow}
+        title={about.values.title}
+        description={about.values.description}
       />
       <div class="grid-3">
         {values.map((value) => (

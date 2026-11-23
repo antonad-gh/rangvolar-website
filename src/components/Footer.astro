@@ -1,69 +1,52 @@
 ---
 import BrandLogo from './BrandLogo.astro';
 import { href } from '../utils/path';
+import { nav, company, footerContent } from '../data/content';
 
 const year = new Date().getFullYear();
-
-const nav = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/team', label: 'Team' },
-  { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/contact', label: 'Contact' },
-];
-
-const services = [
-  { href: '/services#structured-cabling', label: 'Structured Cabling' },
-  { href: '/services#fiber-optic', label: 'Fiber Optic' },
-  { href: '/services#cctv-access', label: 'CCTV & Access Control' },
-  { href: '/services#listrik-ups', label: 'Listrik & UPS' },
-  { href: '/services#data-center', label: 'Data Center' },
-  { href: '/services#integrasi', label: 'Sistem Integrasi' },
-];
+const { contact } = company;
 ---
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href={href('/')} aria-label="Rangrang Volar Sinergi — Beranda">
+        <a href={href('/')} aria-label={`${company.name} — Beranda`}>
           <BrandLogo variant="white" />
         </a>
-        <p class="footer-about">
-          PT. Rangrang Volar Sinergi bergerak di bidang pembangunan dan pemasangan infrastruktur jaringan komputer,
-          fiber optic, CCTV &amp; access control, instalasi listrik, serta integrasi ruang data center.
-        </p>
+        <p class="footer-about">{footerContent.description}</p>
       </div>
 
       <div>
-        <h5>Navigasi</h5>
+        <h5>{footerContent.navHeading}</h5>
         <ul class="footer-links">
           {nav.map((item) => <li><a href={href(item.href)}>{item.label}</a></li>)}
         </ul>
       </div>
 
       <div>
-        <h5>Layanan</h5>
+        <h5>{footerContent.servicesHeading}</h5>
         <ul class="footer-links">
-          {services.map((item) => <li><a href={href(item.href)}>{item.label}</a></li>)}
+          {footerContent.serviceLinks.map((item) => (
+            <li><a href={href(`/services#${item.id}`)}>{item.label}</a></li>
+          ))}
         </ul>
       </div>
 
       <div>
-        <h5>Hubungi Kami</h5>
+        <h5>{footerContent.contactHeading}</h5>
         <div class="footer-contact">
-          📍 [ISI: alamat kantor]<br />
-          📞 [ISI: nomor telepon / WhatsApp]<br />
-          ✉️ [ISI: email resmi]<br />
-          🕐 Senin–Jumat, 08.00–17.00 WIB
+          📍 {contact.address}<br />
+          📞 {contact.phone}<br />
+          ✉️ {contact.email}<br />
+          🕐 {contact.hours}
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© {year} PT. Rangrang Volar Sinergi — Seluruh hak dilindungi.</span>
-      <span>INFRASTRUCTURE · SECURITY · DATACENTER</span>
+      <span>© {year} {company.name} — {footerContent.copyright}</span>
+      <span>{company.tagline}</span>
     </div>
   </div>
 </footer>

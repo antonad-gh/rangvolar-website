@@ -28,7 +28,7 @@ npm run preview    # pratinjau hasil build
 ```
 src/
   components/   Header, Footer, BrandLogo, Icon, ServiceCard, dll.
-  data/site.ts  Data layanan, portofolio, tim, dan nilai perusahaan
+  data/content.ts  ★ SEMUA TEKS SITUS — satu-satunya file yang perlu diedit untuk mengubah tulisan
   layouts/      BaseLayout.astro (meta SEO, font, CSS global)
   pages/        index, about, team, services, portfolio, contact
   styles/       global.css (design system + responsif)
@@ -37,7 +37,7 @@ public/
   favicon.svg
 docs/
   PERENCANAAN.md  Rencana kerja dan detail desain
-  NARASI.md       Draf naskah konten
+  NARASI.md       Draf naskah (ARSIP — bukan sumber teks situs; edit content.ts)
   mockups/        Mockup A & B dalam bentuk HTML
 ```
 
@@ -47,15 +47,35 @@ Foto dokumentasi di `public/images/` berasal dari [Unsplash](https://unsplash.co
 (lisensi gratis untuk penggunaan komersial, tanpa atribusi wajib).
 Ikon-ikon antarmuka dibuat sebagai SVG — bebas lisensi.
 
-## Yang masih perlu dilengkapi sebelum publikasi
+## Mengubah teks situs (PENTING)
 
-Terdapat placeholder bertanda `[ISI: ...]` pada beberapa file. Silakan ganti dengan data resmi:
+**Semua tulisan yang tampil di website ada di satu file: `src/data/content.ts`.**
+Tidak perlu membuka file halaman satu per satu. Cukup edit nilai di file itu, lalu build ulang.
 
-- `src/data/site.ts` — judul/nama proyek portofolio dan nama anggota tim
-- `src/components/Footer.astro` — alamat, telepon, email
-- `src/pages/about.astro` — visi dan misi perusahaan
-- `src/pages/contact.astro` — alamat, telepon, email, dan integrasi backend formulir
-- `src/data/site.ts` — angka statistik (tahun pengalaman, jumlah proyek, dll.) pada `StatBand.astro`
+Bagian-bagian di dalam `content.ts`:
+
+| Bagian | Berisi |
+|---|---|
+| `company` | Nama perusahaan, alamat, telepon, fax, email, jam operasional, tagline |
+| `nav`, `header` | Label menu & tombol header |
+| `home` | Hero, ticker, judul layanan, "Mengapa Kami", portofolio di Home |
+| `about` | Profil, visi, misi, nilai perusahaan |
+| `teamPage` | Judul halaman Tim & tombol CTA |
+| `servicesPage` | Judul halaman Layanan & 4 langkah alur kerja |
+| `portfolioPage` | Judul halaman Portofolio |
+| `contactPage` | Judul, label form, pesan error, pesan sukses |
+| `footerContent`, `stats`, `defaultCta` | Footer, angka statistik, CTA bawaan |
+| `services`, `projects`, `team`, `values` | Isi layanan, proyek, anggota tim, nilai |
+
+Data kontak sudah diisi: Jl. Puri Kartika Baru No.18 Sudimara Selatan · 021-7329074 · info@rangvolar.com.
+
+### Masih berupa placeholder
+
+Cari `[ISI: ...]` di `src/data/content.ts` untuk mengganti:
+- `about.visionMission.vision` dan `.mission` — visi & misi resmi
+- `team` — nama 8 anggota tim (peran & deskripsi sudah diisi, tinggal ganti namanya)
+
+Formulir kontak juga masih perlu dihubungkan ke backend/layanan email (lihat bagian di bawah).
 
 ### Formulir kontak
 

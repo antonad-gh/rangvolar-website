@@ -3,27 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CTASection from '../components/CTASection.astro';
-import { projects } from '../data/site';
+import { portfolioPage, projects } from '../data/content';
 ---
 
-<BaseLayout
-  title="Portofolio — PT. Rangrang Volar Sinergi"
-  description="Dokumentasi proyek pemasangan jaringan, fiber optic, CCTV, instalasi listrik, dan data center yang telah dikerjakan PT. Rangrang Volar Sinergi."
->
-  <PageHero
-    eyebrow="// PORTOFOLIO"
-    title="Proyek yang Telah Kami Kerjakan"
-    description="Setiap proyek adalah bukti komitmen kami dalam menghadirkan infrastruktur yang andal. Berikut adalah sebagian dari pekerjaan yang telah kami selesaikan."
-    current="Portfolio"
-  />
+<BaseLayout title={portfolioPage.seoTitle} description={portfolioPage.seoDescription}>
+  <PageHero {...portfolioPage.hero} />
 
   <section class="section">
     <div class="container">
-      <SectionHeading
-        eyebrow="// DOKUMENTASI PROYEK"
-        title="Hasil Karya di Berbagai Sektor"
-        description="Judul, kategori, dan tahun pada kartu berikut masih berupa contoh. Silakan ganti dengan data proyek sebenarnya dan foto dokumentasi lapangan."
-      />
+      <SectionHeading {...portfolioPage.intro} />
       <div class="work-grid">
         {projects.map((project) => (
           <article class="work-item">
@@ -42,8 +30,8 @@ import { projects } from '../data/site';
   </section>
 
   <CTASection
-    title='Proyek Anda Berikutnya Bisa Menjadi <span class="accent">Bagian dari Karya Kami</span>'
-    description="Hubungi kami untuk mendiskusikan kebutuhan proyek Anda dan mendapatkan penawaran yang sesuai."
-    buttonLabel="Mulai Diskusi"
+    title={portfolioPage.cta.titleHtml}
+    description={portfolioPage.cta.description}
+    buttonLabel={portfolioPage.cta.button}
   />
 </BaseLayout>

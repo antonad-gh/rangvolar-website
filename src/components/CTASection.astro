@@ -1,5 +1,6 @@
 ---
 import { href } from '../utils/path';
+import { defaultCta } from '../data/content';
 
 interface Props {
   title?: string;
@@ -8,9 +9,9 @@ interface Props {
 }
 
 const {
-  title = 'Siap Membangun <span class="accent">Infrastruktur Digital</span> Bersama Kami?',
-  description = 'Ceritakan kebutuhan proyek Anda. Tim kami siap memberikan konsultasi dan penawaran sesuai lingkup pekerjaan — dari perencanaan hingga serah terima.',
-  buttonLabel = 'Hubungi Tim Kami',
+  title = defaultCta.titleHtml,
+  description = defaultCta.description,
+  buttonLabel = defaultCta.button,
 } = Astro.props;
 ---
 

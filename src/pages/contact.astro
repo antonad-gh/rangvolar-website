@@ -2,58 +2,52 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
-import { services } from '../data/site';
+import { contactPage, services, company } from '../data/content';
+
+const f = contactPage.form.fields;
+const { contact } = company;
 ---
 
-<BaseLayout
-  title="Kontak — PT. Rangrang Volar Sinergi"
-  description="Hubungi PT. Rangrang Volar Sinergi untuk konsultasi dan penawaran pemasangan infrastruktur jaringan, fiber optic, CCTV, dan data center."
->
-  <PageHero
-    eyebrow="// HUBUNGI KAMI"
-    title="Mari Diskusikan Proyek Anda"
-    description="Ceritakan kebutuhan infrastruktur Anda. Tim kami siap memberikan konsultasi dan penawaran sesuai lingkup pekerjaan."
-    current="Contact"
-  />
+<BaseLayout title={contactPage.seoTitle} description={contactPage.seoDescription}>
+  <PageHero {...contactPage.hero} />
 
   <section class="section">
     <div class="container">
       <div class="contact-layout">
         <div>
-          <span class="eyebrow">// INFORMASI KONTAK</span>
-          <h2 style="font-size: clamp(26px, 3.5vw, 34px);">Kami Siap Membantu</h2>
+          <span class="eyebrow">{contactPage.intro.eyebrow}</span>
+          <h2 style="font-size: clamp(26px, 3.5vw, 34px);">{contactPage.intro.title}</h2>
           <p style="color: var(--muted); font-size: 14.5px; line-height: 1.85; margin-top: 14px; max-width: 480px;">
-            Untuk konsultasi awal, silakan hubungi kami melalui formulir atau kanal kontak berikut. Data kontak masih
-            berupa placeholder dan perlu diganti dengan informasi resmi perusahaan.
+            {contactPage.intro.description}
           </p>
 
           <div class="info-list" style="margin-top: 28px;">
             <div class="info-item">
               <div class="icon-box"><Icon name="pin" /></div>
               <div>
-                <h3>Alamat Kantor</h3>
-                <p>[ISI: alamat lengkap kantor]<br />[ISI: kota, kode pos]</p>
+                <h3>{contactPage.intro.labels.address}</h3>
+                <p>{contact.address}</p>
               </div>
             </div>
             <div class="info-item">
               <div class="icon-box"><Icon name="phone" /></div>
               <div>
-                <h3>Telepon / WhatsApp</h3>
-                <p>[ISI: nomor telepon / WhatsApp]</p>
+                <h3>{contactPage.intro.labels.phone}</h3>
+                <p>{contact.phone}<br />Fax: {contact.fax}</p>
               </div>
             </div>
             <div class="info-item">
               <div class="icon-box"><Icon name="mail" /></div>
               <div>
-                <h3>Email</h3>
-                <p>[ISI: email resmi perusahaan]</p>
+                <h3>{contactPage.intro.labels.email}</h3>
+                <p>{contact.email}</p>
               </div>
             </div>
             <div class="info-item">
               <div class="icon-box"><Icon name="clock" /></div>
               <div>
-                <h3>Jam Operasional</h3>
-                <p>Senin–Jumat, 08.00–17.00 WIB<br />Sabtu: sesuai jadwal proyek</p>
+                <h3>{contactPage.intro.labels.hours}</h3>
+                <p>{contact.hours}<br />{contact.hoursExtra}</p>
               </div>
             </div>
           </div>
@@ -61,57 +55,55 @@ import { services } from '../data/site';
 
         <div class="form-card">
           <div class="form-success" id="form-success" role="status">
-            Terima kasih! Pesan Anda telah tercatat. Tim kami akan menghubungi Anda segera.
+            {contactPage.form.successMessage}
           </div>
           <form id="contact-form" novalidate>
             <div class="form-row">
               <div class="field">
-                <label for="nama">Nama Lengkap <span class="req">*</span></label>
-                <input type="text" id="nama" name="nama" placeholder="Nama Anda" required />
-                <span class="error">Nama wajib diisi.</span>
+                <label for="nama">{f.nama.label} <span class="req">*</span></label>
+                <input type="text" id="nama" name="nama" placeholder={f.nama.placeholder} required />
+                <span class="error">{f.nama.error}</span>
               </div>
               <div class="field">
-                <label for="perusahaan">Perusahaan / Instansi</label>
-                <input type="text" id="perusahaan" name="perusahaan" placeholder="Nama perusahaan" />
-                <span class="error">Perusahaan wajib diisi.</span>
+                <label for="perusahaan">{f.perusahaan.label}</label>
+                <input type="text" id="perusahaan" name="perusahaan" placeholder={f.perusahaan.placeholder} />
+                <span class="error">{f.perusahaan.error}</span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="field">
-                <label for="email">Email <span class="req">*</span></label>
-                <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required />
-                <span class="error">Alamat email tidak valid.</span>
+                <label for="email">{f.email.label} <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder={f.email.placeholder} required />
+                <span class="error">{f.email.error}</span>
               </div>
               <div class="field">
-                <label for="telepon">Telepon / WhatsApp <span class="req">*</span></label>
-                <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required />
-                <span class="error">Nomor telepon wajib diisi.</span>
+                <label for="telepon">{f.telepon.label} <span class="req">*</span></label>
+                <input type="tel" id="telepon" name="telepon" placeholder={f.telepon.placeholder} required />
+                <span class="error">{f.telepon.error}</span>
               </div>
             </div>
 
             <div class="field">
-              <label for="layanan">Jenis Layanan <span class="req">*</span></label>
+              <label for="layanan">{f.layanan.label} <span class="req">*</span></label>
               <select id="layanan" name="layanan" required>
-                <option value="">Pilih layanan</option>
+                <option value="">{f.layanan.placeholder}</option>
                 {services.map((service) => <option value={service.id}>{service.title}</option>)}
-                <option value="lainnya">Lainnya / konsultasi umum</option>
+                <option value="lainnya">{contactPage.form.otherOption}</option>
               </select>
-              <span class="error">Silakan pilih jenis layanan.</span>
+              <span class="error">{f.layanan.error}</span>
             </div>
 
             <div class="field">
-              <label for="pesan">Pesan / Deskripsi Kebutuhan <span class="req">*</span></label>
-              <textarea id="pesan" name="pesan" placeholder="Ceritakan lingkup pekerjaan, lokasi, dan kebutuhan Anda..." required></textarea>
-              <span class="error">Pesan wajib diisi.</span>
+              <label for="pesan">{f.pesan.label} <span class="req">*</span></label>
+              <textarea id="pesan" name="pesan" placeholder={f.pesan.placeholder} required></textarea>
+              <span class="error">{f.pesan.error}</span>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">
-              Kirim Pesan <Icon name="arrow" />
+              {contactPage.form.submitLabel} <Icon name="arrow" />
             </button>
-            <p class="form-note">
-              Dengan mengirim formulir ini, Anda setuju untuk dihubungi oleh tim kami terkait penawaran layanan.
-            </p>
+            <p class="form-note">{contactPage.form.note}</p>
           </form>
         </div>
       </div>
