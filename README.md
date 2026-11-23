@@ -75,6 +75,9 @@ npm run build
 Ringkasnya: build → copy `dist/*` ke working directory branch `gh-pages` → commit → push.
 GitHub Pages akan otomatis memperbarui situs dalam beberapa menit.
 
+**Penting:** file `.nojekyll` harus tetap ada di root `gh-pages` (sudah otomatis ikut dari `public/`).
+Tanpa file ini, Jekyll mengabaikan folder `_astro` sehingga CSS/JS tidak termuat.
+
 ## Domain sendiri
 
 Jika sudah ingin memakai `www.rangvolar.com`:
