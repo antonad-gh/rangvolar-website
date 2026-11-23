@@ -9,15 +9,21 @@ import { home, services, projects } from '../data/content';
 import { href } from '../utils/path';
 
 const imageAbout = href('/images/network-cables.jpg');
-const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
+const heroImage = href('/images/hero-cabling.jpg');
 ---
 
 <BaseLayout>
   <!-- HERO -->
-  <section class="hero" style={heroStyle}>
-    <div class="container">
+  <section class="hero" style={`--hero-image: url('${heroImage}')`}>
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">&gt; {home.hero.eyebrow}</span>
+        <span class="eyebrow hero-eyebrow">
+          <span class="hero-pulse" aria-hidden="true"></span>
+          &gt; {home.hero.eyebrow}
+        </span>
         <h1 set:html={home.hero.titleHtml} />
         <p class="hero-lead">{home.hero.description}</p>
         <div class="hero-actions">
@@ -25,6 +31,11 @@ const heroStyle = `background-image: url('${href('/images/data-center.jpg')}')`;
           <a href={href('/contact')} class="btn btn-ghost">{home.hero.ctaSecondary}</a>
         </div>
       </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>SCROLL TO EXPLORE</span>
+      <i></i>
     </div>
   </section>
 

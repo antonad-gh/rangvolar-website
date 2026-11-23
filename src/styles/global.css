@@ -255,27 +255,140 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: relative;
   overflow: hidden;
   color: #fff;
-  background-color: var(--navy);
-  background-size: cover;
-  background-position: center;
+  background: var(--navy);
   border-bottom: 1px solid var(--line);
 }
 
+/* Foto latar dengan efek zoom lambat */
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  animation: heroZoom 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.02); }
+  to   { transform: scale(1.16); }
+}
+
+/* Gradient gelap agar teks terbaca + vignette di bawah */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(6, 22, 52, 0.96) 0%, rgba(8, 30, 68, 0.88) 46%, rgba(8, 35, 78, 0.55) 100%);
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(4, 16, 38, .98) 0%, rgba(6, 22, 52, .92) 32%, rgba(8, 30, 68, .55) 62%, rgba(8, 30, 68, .2) 100%),
+    linear-gradient(0deg, rgba(4, 16, 38, .8) 0%, transparent 38%);
   pointer-events: none;
 }
 
-.hero .container {
+/* Grid halus hanya di sisi teks */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: 54px 54px;
+  -webkit-mask-image: linear-gradient(to right, #000, transparent 68%);
+  mask-image: linear-gradient(to right, #000, transparent 68%);
+  pointer-events: none;
+}
+
+/* Cahaya hangat yang mengikuti titik terang di tengah foto */
+.hero-glow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 6%;
+  width: 460px;
+  height: 460px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(245, 158, 11, .16), transparent 65%);
+  pointer-events: none;
+}
+
+.hero .container,
+.hero-inner {
   position: relative;
   z-index: 2;
-  min-height: 520px;
+  min-height: 580px;
   display: flex;
   align-items: center;
-  padding-block: 72px;
+  padding-block: 80px;
+}
+
+/* Aksen titik berdenyut pada label */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #8fd8ff;
+}
+
+.hero-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sky);
+  animation: heroPulse 2.4s ease-out infinite;
+}
+
+@keyframes heroPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(56, 189, 248, .55); }
+  70%  { box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+/* Teks masuk bertahap saat halaman dibuka */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-copy > * { animation: heroRise .8s cubic-bezier(.22, 1, .36, 1) both; }
+.hero-copy > :nth-child(2) { animation-delay: .12s; }
+.hero-copy > :nth-child(3) { animation-delay: .24s; }
+.hero-copy > :nth-child(4) { animation-delay: .36s; }
+
+/* Penanda scroll di bawah hero */
+.hero-scroll {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: rgba(255, 255, 255, .65);
+  white-space: nowrap;
+}
+
+.hero-scroll i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--sky), transparent);
+  transform-origin: top;
+  animation: heroScroll 2s ease-in-out infinite;
+}
+
+@keyframes heroScroll {
+  0%, 100% { transform: scaleY(.35); opacity: .5; }
+  50%      { transform: scaleY(1); opacity: 1; }
 }
 
 .hero-copy { max-width: 720px; }
@@ -951,7 +1064,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .header-cta { display: none; }
 
   .split { grid-template-columns: 1fr; }
-  .hero .container { min-height: 440px; }
+  .hero-inner { min-height: 480px; }
   .float-chip { right: 12px; bottom: -14px; }
   .cta-panel { flex-direction: column; align-items: flex-start; padding: 36px 28px; }
 }
@@ -976,4 +1089,23 @@ ul { list-style: none; margin: 0; padding: 0; }
   .form-card { padding: 24px 20px; }
   .page-hero { padding-block: 56px 44px; }
   .footer-bottom { flex-direction: column; }
+
+  /* Hero di layar kecil: gelap merata supaya teks tetap jelas */
+  .hero::before {
+    background: linear-gradient(90deg, rgba(4, 16, 38, .97), rgba(6, 22, 52, .86));
+  }
+  .hero::after { display: none; }
+  .hero-glow { display: none; }
+  .hero-scroll { display: none; }
+  .hero-inner { min-height: 500px; padding-block: 56px 72px; }
+}
+
+/* Hormati preferensi pengguna yang tidak ingin animasi */
+@media (prefers-reduced-motion: reduce) {
+  .hero-media,
+  .hero-pulse,
+  .hero-scroll i,
+  .hero-copy > * {
+    animation: none;
+  }
 }
