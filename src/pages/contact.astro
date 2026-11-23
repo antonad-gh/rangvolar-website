@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import { services } from '../data/site';
+---
+
+<BaseLayout
+  title="Kontak — PT. Rangrang Volar Sinergi"
+  description="Hubungi PT. Rangrang Volar Sinergi untuk konsultasi dan penawaran pemasangan infrastruktur jaringan, fiber optic, CCTV, dan data center."
+>
+  <PageHero
+    eyebrow="// HUBUNGI KAMI"
+    title="Mari Diskusikan Proyek Anda"
+    description="Ceritakan kebutuhan infrastruktur Anda. Tim kami siap memberikan konsultasi dan penawaran sesuai lingkup pekerjaan."
+    current="Contact"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <div>
+          <span class="eyebrow">// INFORMASI KONTAK</span>
+          <h2 style="font-size: clamp(26px, 3.5vw, 34px);">Kami Siap Membantu</h2>
+          <p style="color: var(--muted); font-size: 14.5px; line-height: 1.85; margin-top: 14px; max-width: 480px;">
+            Untuk konsultasi awal, silakan hubungi kami melalui formulir atau kanal kontak berikut. Data kontak masih
+            berupa placeholder dan perlu diganti dengan informasi resmi perusahaan.
+          </p>
+
+          <div class="info-list" style="margin-top: 28px;">
+            <div class="info-item">
+              <div class="icon-box"><Icon name="pin" /></div>
+              <div>
+                <h3>Alamat Kantor</h3>
+                <p>[ISI: alamat lengkap kantor]<br />[ISI: kota, kode pos]</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon-box"><Icon name="phone" /></div>
+              <div>
+                <h3>Telepon / WhatsApp</h3>
+                <p>[ISI: nomor telepon / WhatsApp]</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon-box"><Icon name="mail" /></div>
+              <div>
+                <h3>Email</h3>
+                <p>[ISI: email resmi perusahaan]</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon-box"><Icon name="clock" /></div>
+              <div>
+                <h3>Jam Operasional</h3>
+                <p>Senin–Jumat, 08.00–17.00 WIB<br />Sabtu: sesuai jadwal proyek</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-success" id="form-success" role="status">
+            Terima kasih! Pesan Anda telah tercatat. Tim kami akan menghubungi Anda segera.
+          </div>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="nama">Nama Lengkap <span class="req">*</span></label>
+                <input type="text" id="nama" name="nama" placeholder="Nama Anda" required />
+                <span class="error">Nama wajib diisi.</span>
+              </div>
+              <div class="field">
+                <label for="perusahaan">Perusahaan / Instansi</label>
+                <input type="text" id="perusahaan" name="perusahaan" placeholder="Nama perusahaan" />
+                <span class="error">Perusahaan wajib diisi.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required />
+                <span class="error">Alamat email tidak valid.</span>
+              </div>
+              <div class="field">
+                <label for="telepon">Telepon / WhatsApp <span class="req">*</span></label>
+                <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required />
+                <span class="error">Nomor telepon wajib diisi.</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="layanan">Jenis Layanan <span class="req">*</span></label>
+              <select id="layanan" name="layanan" required>
+                <option value="">Pilih layanan</option>
+                {services.map((service) => <option value={service.id}>{service.title}</option>)}
+                <option value="lainnya">Lainnya / konsultasi umum</option>
+              </select>
+              <span class="error">Silakan pilih jenis layanan.</span>
+            </div>
+
+            <div class="field">
+              <label for="pesan">Pesan / Deskripsi Kebutuhan <span class="req">*</span></label>
+              <textarea id="pesan" name="pesan" placeholder="Ceritakan lingkup pekerjaan, lokasi, dan kebutuhan Anda..." required></textarea>
+              <span class="error">Pesan wajib diisi.</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Kirim Pesan <Icon name="arrow" />
+            </button>
+            <p class="form-note">
+              Dengan mengirim formulir ini, Anda setuju untuk dihubungi oleh tim kami terkait penawaran layanan.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('form-success');
+
+  function validateField(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+    const field = input.closest('.field');
+    let valid = true;
+
+    if (input.hasAttribute('required') && !input.value.trim()) {
+      valid = false;
+    } else if (input.type === 'email' && input.value.trim()) {
+      valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+    }
+
+    field?.classList.toggle('invalid', !valid);
+    return valid;
+  }
+
+  form?.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')
+    .forEach((input) => {
+      input.addEventListener('input', () => validateField(input));
+      input.addEventListener('change', () => validateField(input));
+      input.addEventListener('blur', () => validateField(input));
+    });
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let allValid = true;
+    form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')
+      .forEach((input) => {
+        if (!validateField(input)) allValid = false;
+      });
+
+    if (!allValid) {
+      success?.style.setProperty('display', 'none');
+      form.querySelector('.invalid input, .invalid select, .invalid textarea')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    /*
+     * TODO: Hubungkan ke backend / layanan email sebelum produksi.
+     * Contoh: fetch('/api/contact', { method: 'POST', body: new FormData(form) })
+     * Untuk situs statis, bisa juga memakai Formspree / Netlify Forms / Web3Forms.
+     */
+    form.reset();
+    if (success) success.style.display = 'block';
+    success?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>

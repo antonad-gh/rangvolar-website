@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import { team } from '../data/site';
+import { href } from '../utils/path';
+---
+
+<BaseLayout
+  title="Tim Kami — PT. Rangrang Volar Sinergi"
+  description="Tim teknisi dan tenaga ahli PT. Rangrang Volar Sinergi di bidang jaringan, fiber optic, keamanan, kelistrikan, dan data center."
+>
+  <PageHero
+    eyebrow="// TIM KAMI"
+    title="Orang di Balik Setiap Instalasi"
+    description="Kami memadukan keahlian di bidang cabling, fiber optic, sistem keamanan, kelistrikan, dan data center untuk memastikan setiap pekerjaan selesai dengan baik."
+    current="Team"
+  />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="// SUMBER DAYA MANUSIA"
+        title="Tim yang Berpengalaman di Lapangan"
+        description="Data nama dan foto berikut masih berupa placeholder. Silakan ganti dengan data tim sebenarnya sebelum publikasi."
+      />
+      <div class="team-grid">
+        {team.map((member) => (
+          <article class="card team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="32" cy="24" r="11" />
+                <path d="M12 58a20 20 0 0 1 40 0" />
+              </svg>
+            </div>
+            <h3>{member.name}</h3>
+            <span class="role">{member.role}</span>
+            <p>{member.note}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-deep">
+    <div class="container">
+      <div class="cta-panel" style="margin: 0;">
+        <div>
+          <h2>Butuh Tenaga Ahli untuk Proyek Anda?</h2>
+          <p>Tim kami siap terjun ke lokasi untuk membantu perencanaan, pemasangan, dan integrasi sistem infrastruktur Anda.</p>
+        </div>
+        <a href={href('/contact')} class="btn btn-primary">Hubungi Tim Kami &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title='Mari Bekerja Sama Membangun <span class="accent">Infrastruktur yang Andal</span>'
+    description="Ceritakan lingkup pekerjaan Anda, dan kami akan menyiapkan tim yang sesuai dengan kebutuhan proyek."
+    buttonLabel="Konsultasi Proyek"
+  />
+</BaseLayout>

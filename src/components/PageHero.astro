@@ -1,0 +1,21 @@
+---
+import { href } from '../utils/path';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  current: string;
+}
+
+const { eyebrow, title, description, current } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href={href('/')}>Home</a><span>/</span>{current}</div>
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h1 set:html={title} />
+    {description && <p>{description}</p>}
+  </div>
+</section>

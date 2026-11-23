@@ -1,0 +1,78 @@
+---
+// Ilustrasi vektor buatan sendiri (bebas lisensi) — terinspirasi dari warna logo perusahaan.
+---
+
+<div class="visual-frame">
+  <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow-green" cx="0" cy="0" r="1" gradientTransform="translate(330 180) rotate(90) scale(170)">
+        <stop stop-color="#22B573" stop-opacity="0.35" />
+        <stop offset="1" stop-color="#22B573" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="glow-orange" cx="0" cy="0" r="1" gradientTransform="translate(440 260) rotate(90) scale(120)">
+        <stop stop-color="#F2913D" stop-opacity="0.28" />
+        <stop offset="1" stop-color="#F2913D" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="rack-fill" x1="0" y1="0" x2="0" y2="1">
+        <stop stop-color="#16203A" />
+        <stop offset="1" stop-color="#0C1426" />
+      </linearGradient>
+    </defs>
+
+    <rect width="560" height="400" fill="url(#glow-green)" />
+    <rect width="560" height="400" fill="url(#glow-orange)" />
+
+    <!-- grid -->
+    <g stroke="#94A3B8" stroke-opacity="0.07" stroke-width="1">
+      <path d="M0 40h560M0 80h560M0 120h560M0 160h560M0 200h560M0 240h560M0 280h560M0 320h560M0 360h560" />
+      <path d="M40 0v400M80 0v400M120 0v400M160 0v400M200 0v400M240 0v400M280 0v400M320 0v400M360 0v400M400 0v400M440 0v400M480 0v400M520 0v400" />
+    </g>
+
+    <!-- server racks -->
+    <g stroke="#22B573" stroke-width="1.6" opacity="0.95">
+      <rect x="60" y="86" width="82" height="210" rx="6" fill="url(#rack-fill)" />
+      <rect x="160" y="64" width="82" height="232" rx="6" fill="url(#rack-fill)" />
+      <rect x="260" y="98" width="82" height="198" rx="6" fill="url(#rack-fill)" />
+    </g>
+
+    <!-- rack slots -->
+    <g stroke="#4B3FC4" stroke-width="1.4" opacity="0.65">
+      <path d="M69 106h64M69 126h64M69 146h64M69 166h64M69 186h64M69 206h64M69 226h64M69 246h64M69 266h64" />
+      <path d="M169 84h64M169 104h64M169 124h64M169 144h64M169 164h64M169 184h64M169 204h64M169 224h64M169 244h64M169 264h64M169 284h64" />
+      <path d="M269 118h64M269 138h64M269 158h64M269 178h64M269 198h64M269 218h64M269 238h64M269 258h64" />
+    </g>
+
+    <!-- status lights -->
+    <g fill="#F2913D">
+      <circle cx="136" cy="116" r="3" /><circle cx="136" cy="176" r="3" /><circle cx="136" cy="236" r="3" />
+      <circle cx="236" cy="94" r="3" /><circle cx="236" cy="184" r="3" /><circle cx="236" cy="274" r="3" />
+      <circle cx="336" cy="128" r="3" /><circle cx="336" cy="208" r="3" />
+    </g>
+
+    <!-- network connections -->
+    <g stroke-width="1.6" fill="none" stroke-linecap="round">
+      <path d="M342 150C410 150 420 84 486 84" stroke="#F2913D" opacity="0.85" />
+      <path d="M342 180C410 190 424 252 486 258" stroke="#22B573" opacity="0.8" />
+      <path d="M242 196C350 230 404 312 486 316" stroke="#A6633C" opacity="0.9" />
+      <path d="M142 130C210 60 300 48 372 48" stroke="#4B3FC4" opacity="0.7" />
+    </g>
+
+    <!-- nodes -->
+    <g fill="#0C1426" stroke-width="1.8">
+      <circle cx="486" cy="84" r="16" stroke="#F2913D" />
+      <circle cx="486" cy="258" r="16" stroke="#22B573" />
+      <circle cx="486" cy="316" r="16" stroke="#A6633C" />
+      <circle cx="372" cy="48" r="13" stroke="#4B3FC4" />
+    </g>
+    <g fill="#E2E8F0" font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">
+      <text x="486" y="88">01</text>
+      <text x="486" y="262">02</text>
+      <text x="486" y="320">03</text>
+      <text x="372" y="52">04</text>
+    </g>
+
+    <!-- frame -->
+    <rect x="28" y="30" width="504" height="340" rx="10" stroke="#22B573" stroke-opacity="0.22" stroke-dasharray="5 7" />
+  </svg>
+  <div class="visual-caption"><b>● SYSTEM ONLINE</b> &nbsp;/&nbsp; NODE: RANGRANG-VOLAR-DC-01</div>
+</div>

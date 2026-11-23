@@ -1,0 +1,51 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { href } from '../utils/path';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'PT. Rangrang Volar Sinergi — Solusi Infrastruktur Jaringan & Data Center',
+  description = 'PT. Rangrang Volar Sinergi menyediakan jasa pemasangan kabel jaringan komputer, fiber optic, CCTV, access control, instalasi listrik, dan pembangunan data center.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a1f44" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href={href('/favicon-logo.png')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rangvolar — PT. Rangrang Volar Sinergi" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

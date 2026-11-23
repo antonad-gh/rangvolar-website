@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+import { href as withBase } from '../utils/path';
+
+interface Props {
+  number: string;
+  category: string;
+  icon: string;
+  title: string;
+  description: string;
+  href?: string;
+}
+
+const { number, category, icon, title, description, href = '/services' } = Astro.props;
+---
+
+<article class="card">
+  <div class="card-num">{number} / {category}</div>
+  <div class="icon-box"><Icon name={icon} /></div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <a class="card-link" href={withBase(href)}>[ detail → ]</a>
+</article>

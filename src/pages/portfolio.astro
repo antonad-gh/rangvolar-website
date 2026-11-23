@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTASection from '../components/CTASection.astro';
+import { projects } from '../data/site';
+---
+
+<BaseLayout
+  title="Portofolio — PT. Rangrang Volar Sinergi"
+  description="Dokumentasi proyek pemasangan jaringan, fiber optic, CCTV, instalasi listrik, dan data center yang telah dikerjakan PT. Rangrang Volar Sinergi."
+>
+  <PageHero
+    eyebrow="// PORTOFOLIO"
+    title="Proyek yang Telah Kami Kerjakan"
+    description="Setiap proyek adalah bukti komitmen kami dalam menghadirkan infrastruktur yang andal. Berikut adalah sebagian dari pekerjaan yang telah kami selesaikan."
+    current="Portfolio"
+  />
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="// DOKUMENTASI PROYEK"
+        title="Hasil Karya di Berbagai Sektor"
+        description="Judul, kategori, dan tahun pada kartu berikut masih berupa contoh. Silakan ganti dengan data proyek sebenarnya dan foto dokumentasi lapangan."
+      />
+      <div class="work-grid">
+        {projects.map((project) => (
+          <article class="work-item">
+            <div class="work-img" style={`background-image: url('${project.image}')`}>
+              <span class="work-badge">{project.category}</span>
+            </div>
+            <div class="work-meta">
+              <small>{project.year}</small>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title='Proyek Anda Berikutnya Bisa Menjadi <span class="accent">Bagian dari Karya Kami</span>'
+    description="Hubungi kami untuk mendiskusikan kebutuhan proyek Anda dan mendapatkan penawaran yang sesuai."
+    buttonLabel="Mulai Diskusi"
+  />
+</BaseLayout>

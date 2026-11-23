@@ -1,0 +1,27 @@
+---
+import { href } from '../utils/path';
+
+interface Props {
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+}
+
+const {
+  title = 'Siap Membangun <span class="accent">Infrastruktur Digital</span> Bersama Kami?',
+  description = 'Ceritakan kebutuhan proyek Anda. Tim kami siap memberikan konsultasi dan penawaran sesuai lingkup pekerjaan — dari perencanaan hingga serah terima.',
+  buttonLabel = 'Hubungi Tim Kami',
+} = Astro.props;
+---
+
+<section class="section-sm">
+  <div class="container">
+    <div class="cta-panel">
+      <div>
+        <h2 set:html={title} />
+        <p>{description}</p>
+      </div>
+      <a href={href('/contact')} class="btn btn-primary">{buttonLabel} &rarr;</a>
+    </div>
+  </div>
+</section>
